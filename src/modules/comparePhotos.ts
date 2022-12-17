@@ -16,3 +16,5 @@ export function comparePhotos(
     return 0;
   }
 }
+
+

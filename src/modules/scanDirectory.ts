@@ -1,6 +1,12 @@
 import { readdir, stat } from 'fs/promises'
 import { join } from 'path'
 
+
+function testForAllowedCharacters(name: string): boolean {
+  const regex = new RegExp(/^[a-z0-9]+$/i)
+  return regex.test(name)
+}
+
 export async function scanDirectory(directory: string): Promise<string[]> {
   try {
     const scan = async (dir: string): Promise<string[]> => {

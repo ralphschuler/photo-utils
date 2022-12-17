@@ -260,3 +260,6 @@ DESCRIPTION
 ### Run in docker
 Build: `docker buildx build --cache-form=test -t test .`
 Run: `docker run -v <path to your images>:/images test debug scan /images`
+
+### Run on Mac
+`yarn dev debug scan <folderPath>`
