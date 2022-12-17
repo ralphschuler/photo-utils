@@ -1,0 +1,64 @@
+{
+  "name": "photo-utils",
+  "version": "0.0.0",
+  "description": "",
+  "author": "Ralph Schuler @ralphschuler",
+  "bin": {
+    "photo-utils": "./bin/run"
+  },
+  "homepage": "https://github.com/ralphschuler/photo-utils",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "repository": "ralphschuler/photo-utils",
+  "types": "dist/index.d.ts",
+  "files": [
+    "/bin",
+    "/dist",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
+  "dependencies": {
+    "@oclif/core": "^1.21.0",
+    "@u4/opencv4nodejs": "^6.2.5",
+    "shx": "^0.3.4"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.15",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.4"
+  },
+  "oclif": {
+    "bin": "photo-utils",
+    "dirname": "photo-utils",
+    "commands": "./dist/commands",
+    "plugins": [],
+    "topicSeparator": " ",
+    "topics": {}
+  },
+  "scripts": {
+    "dev": "./bin/dev",
+    "build": "shx rm -rf dist && tsc -b",
+    "lint": "eslint . --ext .ts --config .eslintrc",
+    "postpack": "shx rm -f oclif.manifest.json",
+    "posttest-": "yarn lint",
+    "prepack": "yarn build && oclif manifest && oclif readme",
+    "postinstall": "find ./node_modules/ -name \"*.js\" | xargs dos2unix && yarn do-install",
+    "install_arm64": "build-opencv --version 4.5.4 --flag=\"-DCMAKE_SYSTEM_PROCESSOR=arm64 -DCMAKE_OSX_ARCHITECTURES=arm64\" rebuild",
+    "install_4.5.5_cuda": "build-opencv --version 4.5.5 --flags=\"-DWITH_CUDA=ON -DWITH_CUDNN=ON -DOPENCV_DNN_CUDA=ON -DCUDA_FAST_MATH=ON\" rebuild",
+    "do-install": "OPENCV_LIB_DIR=/opt/homebrew/Cellar/opencv/4.6.0_1/lib build-opencv rebuild",
+    "test": "echo \"Error: no test specified\" && exit 0",
+    "test:unit": "mocha --forbid-only \"test/**/*.test.ts\"",
+    "version": "oclif readme && git add README.md",
+    "prepublish": "yarn build"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "bugs": "https://github.com/ralphschuler/photo-utils/issues",
+  "opencv4nodejs": {
+    "disableAutoBuild": "1",
+    "opencvIncludeDir": "/opt/homebrew/Cellar/opencv/4.6.0_1/include/opencv4",
+    "opencvLibDir": "/opt/homebrew/Cellar/opencv/4.6.0_1/lib",
+    "opencvBinDir": "/opt/homebrew/Cellar/opencv/4.6.0_1/bin"
+  }
+}

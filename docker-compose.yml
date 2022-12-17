@@ -1,0 +1,9 @@
+version: "3"
+
+services:
+  photo-utils:
+    build: .
+    command: "debug scan /photos"
+    volumes:
+      - "/Users/ralphschuler/Google Drive/My Drive/01_Photos & Videos:/photos:ro"
+      - "$(PWD)/debug_data:/data:rw"
