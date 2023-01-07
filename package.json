@@ -19,7 +19,7 @@
   ],
   "dependencies": {
     "@oclif/core": "^1.21.0",
-    "@u4/opencv4nodejs": "^6.2.5",
+    "@u4/opencv4nodejs": "^6.3.0",
     "shx": "^0.3.4"
   },
   "devDependencies": {
