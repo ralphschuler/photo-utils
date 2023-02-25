@@ -143,38 +143,33 @@
   resolved "https://registry.npmjs.org/@types/node/-/node-18.11.15.tgz#de0e1fbd2b22b962d45971431e2ae696643d3f5d"
   integrity sha512-VkhBbVo2+2oozlkdHXLrb3zjsRkpdnaU2bXmX8Wgle3PUi569eLRaHGlgETQHR7lLL1w7GiG3h9SnePhxNDecw==
 
-"@u4/opencv-build@^0.5.12":
-  version "0.5.12"
-  resolved "https://registry.npmjs.org/@u4/opencv-build/-/opencv-build-0.5.12.tgz#ed0702d1d9bbeb1d5a775ab4925ca0bc5b9ae9b4"
-  integrity sha512-blH276R5GkXxWaQ4staUFlTuGhk3g7KwHqOXnpZtXOF99jK99fKwB5CDRsAoNFSEqOjmTpDw9A8waOA4xx3qoA==
+"@u4/opencv-build@0.7.6":
+  version "0.7.6"
+  resolved "https://registry.yarnpkg.com/@u4/opencv-build/-/opencv-build-0.7.6.tgz#b6173c0aa3c572285b75c49178346f2f3c15f160"
+  integrity sha512-1SEgkqYyg/TOyGnN9fAcA/lZAgrOUw/yzJLgRB/ljs5ciBnj3hEN06xST1Gp8Aop5bV5gxXXh4oYMlqShSPs0A==
   dependencies:
-    "@u4/tiny-glob" "^0.2.10"
-    npmlog "^6.0.2"
+    "@u4/tiny-glob" "^0.3.2"
+    npmlog "^7.0.1"
     picocolors "^1.0.0"
     rimraf "^3.0.2"
 
-"@u4/opencv4nodejs@^6.2.5":
-  version "6.2.5"
-  resolved "https://registry.npmjs.org/@u4/opencv4nodejs/-/opencv4nodejs-6.2.5.tgz#536854f3ecb3548a929a5017b8628c40da4fcb5a"
-  integrity sha512-ljXWeH6t3rTa6B2sqMhGw2NbHaFAbZ1NuuE0NBNMp/wYssT2GRNCYbJGyxNsYOMRBdJqljdkvYcEWcLCFAXhtQ==
+"@u4/opencv4nodejs@^6.4.3":
+  version "6.4.3"
+  resolved "https://registry.yarnpkg.com/@u4/opencv4nodejs/-/opencv4nodejs-6.4.3.tgz#2c64f48d91ac120f5aea29f1e806fabc4e2c1d6f"
+  integrity sha512-/VB9GxW0g+0IRgY/s/J9INVALvZrXqFgL2UmwPSP1Db/fBgXCsXdAcKT2i1sbBodUv8Mu0GA0t3b3fZPVvd71w==
   dependencies:
-    "@u4/opencv-build" "^0.5.12"
-    "@u4/tiny-glob" "^0.3.1"
+    "@u4/opencv-build" "0.7.6"
+    "@u4/tiny-glob" "^0.3.2"
     nan "^2.17.0"
     native-node-utils "^0.2.7"
-    node-gyp "^9.3.0"
+    node-gyp "^9.3.1"
     npmlog "^7.0.1"
     picocolors "^1.0.0"
 
-"@u4/tiny-glob@^0.2.10":
-  version "0.2.10"
-  resolved "https://registry.npmjs.org/@u4/tiny-glob/-/tiny-glob-0.2.10.tgz#913eac511469d497fd6e4dd22e78cc1c03da8695"
-  integrity sha512-KKHFK0yzVEGoupYXaDCJEc16DsxWox9/Hbze2sr8T0R8FtOyyiN4pd9dSKKWyxqGuDIPwW9hvd3Eg3/IXu9TKA==
-
-"@u4/tiny-glob@^0.3.1":
-  version "0.3.1"
-  resolved "https://registry.npmjs.org/@u4/tiny-glob/-/tiny-glob-0.3.1.tgz#bf3fa4981aa8412ae34076e85202a9023cd7763c"
-  integrity sha512-csozNqI+NDMA6OrvYixADnmqMGOaW2Ao37+ia/x7f0WNArwYqC1SCwbe+HmrZohN+/B+CeDqcgOTxR16mh3HZw==
+"@u4/tiny-glob@^0.3.2":
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/@u4/tiny-glob/-/tiny-glob-0.3.2.tgz#5195eee6e8afa2f39e20a1721f188ea5b035f8e4"
+  integrity sha512-xtiuksTyP+8hkvXgkHi6RfyWgKmKg/wkMz2YHdgx4dQoldAS6nHEb2XouahbEgKYyJE2Q1wy0uVplmZ9xBefWA==
 
 abbrev@^1.0.0:
   version "1.1.1"
@@ -1021,10 +1016,10 @@ nice-try@^1.0.4:
   resolved "https://registry.npmjs.org/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"
   integrity sha512-1nh45deeb5olNY7eX82BkPO7SSxR5SSYJiPTrTdFUVYwAl8CKMA5N9PjTYkHiRjisVcxcQ1HXdLhx2qxxJzLNQ==
 
-node-gyp@^9.3.0:
-  version "9.3.0"
-  resolved "https://registry.npmjs.org/node-gyp/-/node-gyp-9.3.0.tgz#f8eefe77f0ad8edb3b3b898409b53e697642b319"
-  integrity sha512-A6rJWfXFz7TQNjpldJ915WFb1LnhO4lIve3ANPbWreuEoLoKlFT3sxIepPBkLhM27crW8YmN+pjlgbasH6cH/Q==
+node-gyp@^9.3.1:
+  version "9.3.1"
+  resolved "https://registry.yarnpkg.com/node-gyp/-/node-gyp-9.3.1.tgz#1e19f5f290afcc9c46973d68700cbd21a96192e4"
+  integrity sha512-4Q16ZCqq3g8awk6UplT7AuxQ35XN4R/yf/+wSAwcBUAjg7l58RTactWaP8fIDTi0FzI7YcVLujwExakZlfWkXg==
   dependencies:
     env-paths "^2.2.0"
     glob "^7.1.4"
@@ -1044,7 +1039,7 @@ nopt@^6.0.0:
   dependencies:
     abbrev "^1.0.0"
 
-npmlog@^6.0.0, npmlog@^6.0.2:
+npmlog@^6.0.0:
   version "6.0.2"
   resolved "https://registry.npmjs.org/npmlog/-/npmlog-6.0.2.tgz#c8166017a42f2dea92d6453168dd865186a70830"
   integrity sha512-/vBvz5Jfr9dT/aFWd0FIRf+T/Q2WBsLENygUaFUqstqsycmZAP/t5BvFJTK0viFmSUxiUKTUplWy5vt+rvKIxg==
