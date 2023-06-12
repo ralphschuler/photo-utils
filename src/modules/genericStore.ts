@@ -49,4 +49,20 @@ export class GenericStore<T> {
     return this.storeData[key] !== undefined
   }
 
+  public get count() {
+    return Object.keys(this.storeData).length
+  }
+
+  public get keys() {
+    return Object.keys(this.storeData)
+  }
+
+  public get values() {
+    return Object.values(this.storeData)
+  }
+
+  public get entries() {
+    return Object.entries(this.storeData)
+  }
+
 }

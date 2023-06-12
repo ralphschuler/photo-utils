@@ -1,5 +1,5 @@
 import { detectPhotoBlur } from "../../modules/detectPhotoBlur"
-import { scanDirectory2 } from "../../modules/scanDirectory"
+import { scanDirectory } from "../../modules/scanDirectory"
 import { Command } from "@oclif/core";
 import { extname, basename, join } from "path"
 import { PhotoInfo } from "../../interfaces/PhotoInfo"
@@ -26,39 +26,51 @@ export default class Scan extends Command {
   ]
 
   async run(): Promise<void> {
+    const unreadableFiles = new GenericStore<string>(join(this.config.cacheDir, "unreadableFiles.json"))
     const photoInfos = new GenericStore<PhotoInfo>(join(this.config.cacheDir, "photoInfos.json"))
 
-    const {args} = await this.parse(Scan)
+    const { args } = await this.parse(Scan)
 
     const path = args.path
-    const files = scanDirectory2(path)
+    const files = scanDirectory(path)
     let index = 1
     for await (const file of files) {
+      const startTimestamp = Date.now()
       const id = Buffer.from(file).toString("base64")
-      if (!isPhoto(file)) {
+      if (!isPhoto(file) ) {
         continue
       }
 
-      if (photoInfos.has(id)) {
-        console.log(`[${index++}] Skipping ${file}...`)
+      if (photoInfos.has(id)|| unreadableFiles.has(id)) {
+        console.log(`[${index++}] Skipping ${file}`)
         continue
       }
 
-      console.log(`[${index++}] ${file}`)
-      const blurScore = detectPhotoBlur(file)
-      const hash = calculatePhotoHash(file)
-      const faces: FaceInfo[] = detectFaces(file)
-      const features = extractFeatures(file)
-      photoInfos.set(id, {
-        id, 
-        name: basename(file),
-        path: file,
-        blurScore,
-        hash,
-        faces,
-        labels: [],
-        features
-      })
+      console.log(`[${index++}] Scanning ${file}`)
+      try {
+        const blurScore = detectPhotoBlur(file)
+        const hash = calculatePhotoHash(file)
+        const faces: FaceInfo[] = detectFaces(file)
+        const features = extractFeatures(file)
+        photoInfos.set(id, {
+          id,
+          name: basename(file),
+          path: file,
+          blurScore,
+          hash,
+          faces,
+          labels: [],
+          features
+        })
+      } catch (error: any) {
+        console.log(`Error: ${error}`)
+        unreadableFiles.set(id, file)
+        continue
+      } finally {
+        const endTimestamp = Date.now()
+        console.log(`Scanned in ${endTimestamp - startTimestamp}ms`)
+      }
+
       console.log("")
     }
   }

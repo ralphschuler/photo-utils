@@ -12,8 +12,7 @@ export function comparePhotos(
     const score = diff.mean().w;
     return score;
   } catch (error: any) {
-    console.log("Could not compare photos", error);
-    return 0;
+    throw error
   }
 }
 

@@ -2,7 +2,7 @@ import { CascadeClassifier, HAAR_FRONTALFACE_ALT2, imread, Mat } from "@u4/openc
 import { FaceInfo } from "../interfaces/FaceInfo";
 
 export function detectFaces(photoPath: string): FaceInfo[] {
-  console.log(`Detecting faces...`);
+  console.log(`Detecting faces`);
   try {
     const classifier = new CascadeClassifier(HAAR_FRONTALFACE_ALT2)
     const image = imread(photoPath)
@@ -21,7 +21,6 @@ export function detectFaces(photoPath: string): FaceInfo[] {
     console.log(`Found ${faces.length} faces`)
     return faces
   } catch (error: any) {
-    console.log("Could not detect faces", error);
-    return [];
+    throw error
   }
 }

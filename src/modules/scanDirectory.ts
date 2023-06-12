@@ -1,43 +1,7 @@
 import { readdir, stat } from 'fs/promises'
 import { join } from 'path'
 
-
-function testForAllowedCharacters(name: string): boolean {
-  const regex = new RegExp(/^[a-z0-9]+$/i)
-  return regex.test(name)
-}
-
-export async function scanDirectory(directory: string): Promise<string[]> {
-  try {
-    const scan = async (dir: string): Promise<string[]> => {
-      console.log(`Scanning ${dir}`)
-      const files = await readdir(dir)
-      const fileList: string[] = []
-  
-      for (const file of files) {
-        const fullPath = join(dir, file)
-        const stats = await stat(fullPath)
-        if (stats.isDirectory()) {
-          const subDirFiles = await scan(fullPath)
-          fileList.push(...subDirFiles)
-        }
-  
-        if (stats.isFile()) {
-          fileList.push(fullPath)
-        }
-      }
-      console.log(`Found ${fileList.length} files in ${dir}`)
-      return fileList
-    }
-    return await scan(directory)
-  } catch (error: any) {
-    console.log(error.message)
-    return []
-  }
-}
-
-// create a recursive scan directory function which will use yield to return the files
-export async function* scanDirectory2(directory: string): AsyncGenerator<string> {
+export async function* scanDirectory(directory: string): AsyncGenerator<string> {
   try {
     console.log(`Scanning ${directory}`)
     const files = await readdir(directory)
@@ -45,9 +9,9 @@ export async function* scanDirectory2(directory: string): AsyncGenerator<string>
       const fullPath = join(directory, file)
       const stats = await stat(fullPath)
       if (stats.isDirectory()) {
-        yield* scanDirectory2(fullPath)
+        yield* scanDirectory(fullPath)
       }
-      if (stats.isFile()) {
+      if (stats.isFile() && stats.size > 0) {
         yield fullPath
       }
     }

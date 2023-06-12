@@ -2,7 +2,7 @@ import { readFileSync } from 'fs'
 import { createHash } from 'crypto'
 
 export function calculatePhotoHash(path: string): string {
-  console.log(`Calculating hash...`)
+  console.log(`Calculating hash`)
   try {
     const rawImage = readFileSync(path)
 
@@ -10,7 +10,6 @@ export function calculatePhotoHash(path: string): string {
 
     return hash
   } catch (error: any) {
-    console.log("Could not calculate hash", error)
-    return ''
+    throw error
   }
 }

@@ -21,10 +21,6 @@ export function extractFeatures(
     descriptors,
   };
   } catch (error: any) {
-    console.log("Could not extract features", error)
-    return {
-      keypoints: [],
-      descriptors: new Mat(),
-    }
+    throw error
   }
 }

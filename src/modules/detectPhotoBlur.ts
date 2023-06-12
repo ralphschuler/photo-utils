@@ -12,7 +12,6 @@ export function detectPhotoBlur(path: string): number {
     console.log(`Blur score ${score}`)
     return score
   } catch (error: any) {
-    console.log("Could not detect blur", error)
-    return 0
+    throw error
   }
 }
